@@ -1,0 +1,42 @@
+<ShaderNodePreset SupportsAdaptiveDegradation="False" SupportsAction="False" SupportsTransition="False" SupportsTimeline="False" TimelineUseBack="False" MatteProvider="False" CommercialUsePermitted="True" ShaderType="Matchbox" SoftwareVersion="2017.0.0" LimitInputsToTexture="True" Version="1" Description="Chubby Sobel — 5x5 edge detection with softness, threshold, gain, colour mode and source compositing." Name="Chobel">
+   <Shader Clear="0" GridSubdivision="1" OutputBitDepth="Output" Index="1">
+
+      <Uniform Index="0" NoInput="Error" Tooltip="" DisplayName="Source" InputColor="67, 77, 83" Mipmaps="False" GL_TEXTURE_WRAP_T="GL_CLAMP_TO_EDGE" GL_TEXTURE_WRAP_S="GL_CLAMP_TO_EDGE" GL_TEXTURE_MAG_FILTER="GL_LINEAR" GL_TEXTURE_MIN_FILTER="GL_LINEAR" Type="sampler2D" Name="Input1">
+      </Uniform>
+
+      <Uniform ResDependent="None" Max="10.0" Min="0.01" Default="1.0" Inc="0.01"
+               Tooltip="Sample spacing in pixels. Increase to spread the kernel and fatten edges."
+               Row="0" Col="0" Page="0" Type="float" DisplayName="Step Size" Name="step_size">
+      </Uniform>
+
+      <Uniform ResDependent="None" Max="1.0" Min="0.0" Default="0.0" Inc="0.01"
+               Tooltip="Diffuses the edge response. Blends each kernel tap toward the local neighbourhood mean — higher values produce softer, more spread-out edges."
+               Row="1" Col="0" Page="0" Type="float" DisplayName="Softness" Name="softness">
+      </Uniform>
+
+      <Uniform ResDependent="None" Max="1.0" Min="0.0" Default="0.0" Inc="0.005"
+               Tooltip="Clip edges below this value. Raise to suppress faint or noisy edges."
+               Row="2" Col="0" Page="0" Type="float" DisplayName="Threshold" Name="threshold">
+      </Uniform>
+
+      <Uniform ResDependent="None" Max="10.0" Min="0.0" Default="1.0" Inc="0.05"
+               Tooltip="Multiply edge brightness after detection."
+               Row="3" Col="0" Page="0" Type="float" DisplayName="Gain" Name="gain">
+      </Uniform>
+
+      <Uniform Default="false"
+               Tooltip="Off = Luminance (BT.709), On = Per-Channel colour (detects isoluminant colour transitions)"
+               Row="4" Col="0" Page="0" Type="bool" DisplayName="Colour Edges" Name="color_edges">
+      </Uniform>
+
+      <Uniform Default="false"
+               Tooltip="Off = Edge matte only, On = Edge added over source"
+               Row="5" Col="0" Page="0" Type="bool" DisplayName="Add to Source" Name="output_mode">
+      </Uniform>
+
+   </Shader>
+   <Page Name="Controls" Page="0">
+      <Col Name="Chubbiness" Col="0" Page="0">
+      </Col>
+   </Page>
+</ShaderNodePreset>
