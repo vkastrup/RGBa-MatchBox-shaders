@@ -1,0 +1,65 @@
+<ShaderNodePreset SupportsAdaptiveDegradation="False" SupportsAction="False" SupportsTransition="False" SupportsTimeline="False" TimelineUseBack="False" MatteProvider="False" CommercialUsePermitted="True" ShaderType="Matchbox" SoftwareVersion="2025.0.0" LimitInputsToTexture="True" Version="1" Description="Six-algorithm dither: Bayer 2x2/4x4/8x8, White Noise, IGN, Error Diffusion. Color or luma mode. Temporal golden ratio animation." Name="Dither">
+
+   <Shader Clear="0" GridSubdivision="1" OutputBitDepth="Output" Index="1">
+
+      <Uniform Index="0" NoInput="Error" Tooltip="" DisplayName="Source"
+               InputColor="67, 77, 83" Mipmaps="False"
+               GL_TEXTURE_WRAP_T="GL_CLAMP_TO_EDGE"
+               GL_TEXTURE_WRAP_S="GL_CLAMP_TO_EDGE"
+               GL_TEXTURE_MAG_FILTER="GL_LINEAR"
+               GL_TEXTURE_MIN_FILTER="GL_LINEAR"
+               Type="sampler2D" Name="Input1">
+      </Uniform>
+
+      <Uniform ResDependent="None" Max="5" Min="0" Default="2" Inc="1"
+               Tooltip="Dither algorithm. 0=Bayer 2x2, 1=Bayer 4x4, 2=Bayer 8x8, 3=White Noise, 4=IGN (Interleaved Gradient Noise), 5=Error Diffusion (1D approximation)."
+               Row="0" Col="0" Page="0"
+               Type="int" DisplayName="Algo" Name="algo">
+      </Uniform>
+
+      <Uniform ResDependent="None" Max="16" Min="2" Default="2" Inc="1"
+               Tooltip="Quantization levels. 2 = pure B&amp;W (or primary colours in colour mode). Higher values posterize with intermediate steps."
+               Row="1" Col="0" Page="0"
+               Type="int" DisplayName="Levels" Name="levels">
+      </Uniform>
+
+      <Uniform ResDependent="None" Max="2.0" Min="0.0" Default="1.0" Inc="0.01"
+               Tooltip="Dither amplitude. Scales how much the threshold offsets each quantization step. 0 = no dithering (flat quantize). 1 = standard. &gt;1 = over-dithered / coarser texture."
+               Row="2" Col="0" Page="0"
+               Type="float" DisplayName="Spread" Name="spread">
+      </Uniform>
+
+      <Uniform ResDependent="None" Max="32" Min="1" Default="8" Inc="1"
+               Tooltip="Error diffusion only (Algo=5). Number of pixels scanned left and down before the current pixel. Larger windows carry error further."
+               Row="3" Col="0" Page="0"
+               Type="int" DisplayName="Scan Size" Name="scan_size">
+      </Uniform>
+
+      <Uniform ResDependent="None" Default="true"
+               Tooltip="Colour mode. On = dither each RGB channel independently (colour output). Off = dither BT.709 luminance only (B&amp;W output)."
+               Row="0" Col="1" Page="0"
+               Type="bool" DisplayName="Color" Name="color_mode">
+      </Uniform>
+
+      <Uniform ResDependent="None" Default="false"
+               Tooltip="Temporal dithering. Shifts the threshold each frame by the golden ratio (0.618...). Over time the dither pattern integrates to a smooth gradient. Works on all modes except Error Diffusion."
+               Row="1" Col="1" Page="0"
+               Type="bool" DisplayName="Temporal" Name="temporal">
+      </Uniform>
+
+      <Uniform ResDependent="None" Max="1.0" Min="0.0" Default="0.85" Inc="0.01"
+               Tooltip="Error diffusion only (Algo=5). How much of the quantization error from each pixel propagates to the next. 0 = no propagation (flat quantize). 1 = full carry."
+               Row="2" Col="1" Page="0"
+               Type="float" DisplayName="Error Carry" Name="error_carry">
+      </Uniform>
+
+   </Shader>
+
+   <Page Name="Controls" Page="0">
+      <Col Name="Dither" Col="0" Page="0">
+      </Col>
+      <Col Name="Options" Col="1" Page="0">
+      </Col>
+   </Page>
+
+</ShaderNodePreset>
