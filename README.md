@@ -113,6 +113,24 @@ Approximation of error-diffusion dithering (Floyd-Steinberg).
 
 ---
 
+## Dithering — Original Error Diffusion
+
+
+RGBa | v0.1
+
+The original error diffusion dither. Converts the image to greyscale using manual per-channel luma weights, then runs an approximate 1D error diffusion sweep along both x and y axes before thresholding to black and white. Output is always B&W. Very bad, lots of fun.
+
+---
+
+## Dither2 — Multi-Algorithm Dither (Bayer / Noise)
+
+
+RGBa | v0.2
+
+Ordered and noise dithering. An old version, but decided to keep it. 
+
+---
+
 ## Streak - Streak / Flare Filter
 
 RGBa | v1.0
