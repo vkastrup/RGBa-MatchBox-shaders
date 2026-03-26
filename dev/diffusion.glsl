@@ -1,4 +1,7 @@
 //RGBa
+// Diffusion — Random Scatter Blur
+// Version 0.2
+// Random disc-sample blur with optional edge-preserving mask.
 
 uniform float adsk_result_w, adsk_result_h;
 uniform sampler2D input1;
