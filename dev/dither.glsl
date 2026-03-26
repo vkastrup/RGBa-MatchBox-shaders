@@ -1,4 +1,8 @@
 //RGBa
+// Dither — Combined Dither Shade
+// Version 1.0
+//
+// Six dither algorithms in one shader
 
 uniform sampler2D Input1;
 uniform float adsk_result_w, adsk_result_h, adsk_time;
