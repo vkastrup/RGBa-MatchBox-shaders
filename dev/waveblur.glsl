@@ -1,4 +1,6 @@
 //RGBa
+// WaveBlur — Parametric Wave Blur
+// Version 1.0
 
 uniform sampler2D Input1;
 uniform float adsk_result_w, adsk_result_h;
