@@ -1,4 +1,8 @@
 //RGBa
+// Sobel / Scharr Edge Detection
+// Version 0.2
+// Improvements over v0.1: REC.709 luminance weights, Scharr kernel option,
+// threshold + gain controls, per-channel colour edge mode
 
 uniform sampler2D Input1;
 uniform float adsk_result_w, adsk_result_h;
