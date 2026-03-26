@@ -1,4 +1,7 @@
 //RGBa
+// Halation — Film Halation & Bloom
+// Version 0.2
+//
 
 uniform float adsk_result_w, adsk_result_h;
 uniform sampler2D input1;
