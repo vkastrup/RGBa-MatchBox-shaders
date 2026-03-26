@@ -113,3 +113,27 @@ Approximation of error-diffusion dithering (Floyd-Steinberg).
 
 ---
 
+## Streak - Streak / Flare Filter
+
+RGBa | v1.0
+
+Creates elongated light streaks radiating from bright highlights. Two primary uses: anamorphic lens streaks (long horizontal blue-white streaks, characteristic of anamorphic cinema lenses) and star filter patterns (4-point, 6-point, 8-point star from multiple streak directions).
+
+---
+
+## Streak Directions
+
+| Streaks value | Pattern | Ray count |
+|---|---|---|
+| 1 | Anamorphic (horizontal at Angle=0) | 2 |
+| 2 | 4-point star | 4 |
+| 3 | 6-point star | 6 |
+| 4 | 8-point star | 8 |
+| 5 | 10-point star | 10 |
+| 6 | 12-point star | 12 |
+
+Each additional direction adds an equal amount to total streak brightness. If you want a 4-point star at the same per-streak brightness as a 1-direction anamorphic, reduce `Intensity` proportionally.
+
+---
+
+
