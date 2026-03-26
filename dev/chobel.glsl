@@ -1,5 +1,5 @@
 //RGBa
-// Chobel — Chubby Sobel 5x5 Edge Detection - Matchbox Shader for Autodesk Flame
+// Chobel — Chubby Sobel 5x5 Edge Detection
 // Version 0.3
 // A 5x5 Sobel that naturally produces fatter edges than 3x3.
 
