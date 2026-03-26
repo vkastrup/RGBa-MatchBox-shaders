@@ -1,0 +1,61 @@
+<ShaderNodePreset
+   SupportsAdaptiveDegradation="False" SupportsAction="False"
+   SupportsTransition="False" SupportsTimeline="False"
+   TimelineUseBack="False" MatteProvider="False" ShaderType="Matchbox"
+   SoftwareVersion="2025.0.0" LimitInputsToTexture="True"
+   Version="1" Description="Random scatter diffusion blur with optional edge-preserving mask." Name="Diffusion">
+
+   <Shader OutputBitDepth="Output" Index="1">
+
+      <Uniform Index="0" NoInput="Error"
+               Tooltip="" DisplayName="Source"
+               InputColor="67, 77, 83" Mipmaps="False"
+               GL_TEXTURE_WRAP_T="GL_CLAMP_TO_EDGE"
+               GL_TEXTURE_WRAP_S="GL_CLAMP_TO_EDGE"
+               GL_TEXTURE_MAG_FILTER="GL_LINEAR"
+               GL_TEXTURE_MIN_FILTER="GL_LINEAR"
+               Type="sampler2D" Name="input1">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="50.0" Min="0.0" Default="5.0" Inc="0.1"
+               Tooltip="Scatter radius in pixels."
+               Row="0" Col="0" Page="0"
+               Type="float" DisplayName="Radius" Name="radius">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="64" Min="1" Default="16" Inc="1"
+               Tooltip="Number of random samples. Higher = smoother but slower. 16-32 is a good working range."
+               Row="1" Col="0" Page="0"
+               Type="int" DisplayName="Iterations" Name="iterations">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="1.0" Min="0.0" Default="1.0" Inc="0.01"
+               Tooltip="Blend amount between original and diffused result."
+               Row="2" Col="0" Page="0"
+               Type="float" DisplayName="Strength" Name="strength">
+      </Uniform>
+
+      <Uniform Default="false"
+               Tooltip="Restricts diffusion to flat areas. Edges detected via Sobel are kept sharp."
+               Row="3" Col="0" Page="0"
+               Type="bool" DisplayName="Edge Mask" Name="enable_edge_mask">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="1.0" Min="0.0" Default="0.1" Inc="0.005"
+               Tooltip="Sensitivity of the edge mask. Lower values protect more edges."
+               Row="4" Col="0" Page="0"
+               Type="float" DisplayName="Edge Threshold" Name="edge_threshold">
+      </Uniform>
+
+   </Shader>
+
+   <Page Name="Controls" Page="0">
+      <Col Name="Diffusion" Col="0" Page="0">
+      </Col>
+   </Page>
+
+</ShaderNodePreset>

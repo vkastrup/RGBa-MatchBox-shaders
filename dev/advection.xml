@@ -1,0 +1,90 @@
+<ShaderNodePreset
+   SupportsAdaptiveDegradation="False" SupportsAction="False"
+   SupportsTransition="False" SupportsTimeline="False"
+   TimelineUseBack="False" MatteProvider="False" ShaderType="Matchbox"
+   SoftwareVersion="2025.0.0" LimitInputsToTexture="True"
+   Version="1" Description="Edge-tangent advection. Smear mode warps along edges; Flow (LIC) mode accumulates fibrous brushstroke-like streaks." Name="Advection">
+
+   <Shader OutputBitDepth="Output" Index="1">
+
+      <Uniform Index="0" NoInput="Error"
+               Tooltip="" DisplayName="Source"
+               InputColor="67, 77, 83" Mipmaps="False"
+               GL_TEXTURE_WRAP_T="GL_CLAMP_TO_EDGE"
+               GL_TEXTURE_WRAP_S="GL_CLAMP_TO_EDGE"
+               GL_TEXTURE_MAG_FILTER="GL_LINEAR"
+               GL_TEXTURE_MIN_FILTER="GL_LINEAR"
+               Type="sampler2D" Name="input1">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="20.0" Min="0.1" Default="3.0" Inc="0.1"
+               Tooltip="Step size in pixels per iteration."
+               Row="0" Col="0" Page="0"
+               Type="float" DisplayName="Strength" Name="strength">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="32" Min="1" Default="8" Inc="1"
+               Tooltip="Steps per direction. Flow mode walks this many steps forward AND backward (2x total samples)."
+               Row="1" Col="0" Page="0"
+               Type="int" DisplayName="Iterations" Name="iterations">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="1.0" Min="0.0" Default="0.01" Inc="0.005"
+               Tooltip="Minimum gradient magnitude to trigger advection. Raise to restrict effect to stronger edges only."
+               Row="2" Col="0" Page="0"
+               Type="float" DisplayName="Edge Threshold" Name="edge_threshold">
+      </Uniform>
+
+      <Uniform Default="false"
+               Tooltip="Off = Smear (sample at walk endpoint — warp/distortion). On = Flow/LIC (accumulate along path — fibrous brushstroke streaks)."
+               Row="3" Col="0" Page="0"
+               Type="bool" DisplayName="Flow (LIC)" Name="mode">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="180.0" Min="-180.0" Default="0.0" Inc="1.0"
+               Tooltip="Rotates the walk direction by this many degrees. 0 = along edge tangent. 90 = perpendicular to edge (gradient direction). Mix for diagonal flows."
+               Row="4" Col="0" Page="0"
+               Type="float" DisplayName="Flow Bias" Name="flow_bias">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="3.14" Min="0.0" Default="0.0" Inc="0.01"
+               Tooltip="Amplitude of wave rotation applied to the walk direction (radians). 0 = no wave."
+               Row="0" Col="1" Page="0"
+               Type="float" DisplayName="Wave Amplitude" Name="wave_amp">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="50.0" Min="0.0" Default="5.0" Inc="0.1"
+               Tooltip="Frequency of the wave distortion."
+               Row="1" Col="1" Page="0"
+               Type="float" DisplayName="Wave Frequency" Name="wave_freq">
+      </Uniform>
+
+      <Uniform Default="false"
+               Tooltip="Off = linear wave phase along X. On = radial wave phase from Center point."
+               Row="2" Col="1" Page="0"
+               Type="bool" DisplayName="Radial Waves" Name="radial_waves">
+      </Uniform>
+
+      <Uniform ResDependent="None"
+               Max="1.0" Min="0.0" Default="0.5" Inc="0.001"
+               Tooltip="Centre point for radial waves, in UV coordinates (0-1)."
+               Row="3" Col="1" Page="0"
+               Type="vec2" DisplayName="Center" Name="center">
+      </Uniform>
+
+   </Shader>
+
+   <Page Name="Controls" Page="0">
+      <Col Name="Advection" Col="0" Page="0">
+      </Col>
+      <Col Name="Wave" Col="1" Page="0">
+      </Col>
+   </Page>
+
+</ShaderNodePreset>
