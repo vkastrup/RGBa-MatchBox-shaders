@@ -3,7 +3,7 @@
 // Version 0.2
 // Improvements over v0.1: proper BT.709 luminance weights, Scharr kernel option,
 // threshold + gain controls, per-channel colour edge mode,
-// output compositing mode, alpha passthrough.
+
 
 uniform sampler2D Input1;
 uniform float adsk_result_w, adsk_result_h;
@@ -15,12 +15,12 @@ uniform bool  kernel;      // false = Sobel, true = Scharr
 uniform bool  color_edges; // false = luminance, true = per-channel colour edges
 uniform bool  output_mode; // false = edge only, true = add edge over source
 
-// ITU-R BT.709 luminance weights — correct for HD/linear-light images
+
 float luma(vec4 c) {
     return dot(vec3(0.2126, 0.7152, 0.0722), c.rgb);
 }
 
-// Luminance-based gradient — returns scalar Gx, Gy
+
 void grad_luma(float sx, float sy, vec2 uv, out float gx, out float gy) {
     float tl = luma(texture2D(Input1, uv + vec2(-sx,  sy)));
     float l  = luma(texture2D(Input1, uv + vec2(-sx, 0.0)));
@@ -42,7 +42,7 @@ void grad_luma(float sx, float sy, vec2 uv, out float gx, out float gy) {
     }
 }
 
-// Per-channel gradient — detects edges in isoluminant colour transitions
+
 void grad_color(float sx, float sy, vec2 uv, out vec3 gx, out vec3 gy) {
     vec3 tl = texture2D(Input1, uv + vec2(-sx,  sy)).rgb;
     vec3 l  = texture2D(Input1, uv + vec2(-sx, 0.0)).rgb;
